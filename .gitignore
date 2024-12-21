@@ -1,0 +1,34 @@
+# User-specific files
+.idea/
+.vscode/
+
+# Build results
+bin/
+obj/
+
+# Uncomment if you have to ignore the project's .user file
+# *.user
+# *.suo
+# *.userosscache
+# *.sln.docstates
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files
+Thumbs.db
+ehthumbs.db
+
+# JetBrains Rider
+.idea/
+
+# VS Code directories and files
+.vscode/
+
+# ASP.NET files
+project.lock.json
+project.fragment.lock.json
+
