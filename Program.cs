@@ -9,9 +9,9 @@ internal class Program
 
     public static int MaximumInArray(int[] input)
     {
-        if (input.Length < 0)
+        if (input.Length == 0)
         {
-            throw new ArgumentException("the input array should have more than 1 element");
+            throw new ArgumentException("the input array should have at least 1 element");
         }
 
 
