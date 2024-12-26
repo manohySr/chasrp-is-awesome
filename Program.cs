@@ -3,33 +3,72 @@ internal class Program
 {
     public static void Main(string[] args)
     {
-        string descriptionOfChamp = "The real CHAMP is: ";
-        Console.WriteLine(descriptionOfChamp + MaximumInArray([3, 5, 7, 2, 8]));
+        int[] input = [0, 0, 0, 0];
+
+        Console.WriteLine("Before");
+        print(input);
+
+        Console.WriteLine("");
+        moveZeroToEnd(input);
+        Console.WriteLine("");
+
+        Console.WriteLine("After");
+        print(input);
     }
 
-    public static int MaximumInArray(int[] input)
+
+    public static void moveZeroToEnd(int[] input)
     {
-        if (input.Length == 0)
+        int indexOfZero = 0;
+
+        for (int i = 0; i < input.Length; i++)
         {
-            throw new ArgumentException("the input array should have at least 1 element");
-        }
-
-
-        // so let's find the real one: THE REAL MAX CHAMP
-        int maxInTitle = input[0]; //someone who pretends to be the best
-        int iteration = 1;
-
-        while (iteration < input.Length)
-        {
-            int currentChallenger = input[iteration];
-            if (maxInTitle < currentChallenger)
+            if (input[i] != 0)
             {
-                maxInTitle = currentChallenger;
+                swapValueInIndex(input, indexOfZero, i);
+                indexOfZero++;
             }
-            iteration++;
+        }
+    }
+
+
+    public static void swapValueInIndex(int[] input, int indexA, int indexB)
+    {
+        int temp = input[indexA];
+        input[indexA] = input[indexB];
+        input[indexB] = temp;
+    }
+
+    public static void print(int[] input)
+    {
+        foreach (var item in input)
+        {
+            Console.Write(item);
+            Console.Write(" - ");
+        }
+    }
+
+    // Function to generate an int[] array with millions of values
+    public static int[] GenerateInputArray(int size)
+    {
+        // Original small input
+        int[] originalInput = { 0, 1, 0, 3, 12 };
+
+        // Create a new array of the desired size
+        int[] extendedInput = new int[size];
+
+        // Copy original input into the new array
+        Array.Copy(originalInput, extendedInput, originalInput.Length);
+
+        // Fill the rest of the array with a mix of zeros and random non-zero values
+        Random random = new Random();
+        for (int i = originalInput.Length; i < size; i++)
+        {
+            // Randomly assign zero or a non-zero value (1-100)
+            extendedInput[i] = random.Next(0, 2) == 0 ? 0 : random.Next(1, 101);
         }
 
-        return maxInTitle;
+        return extendedInput;
     }
 }
 
